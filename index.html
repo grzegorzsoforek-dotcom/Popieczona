@@ -8,9 +8,9 @@
 <meta name="theme-color" content="#241914" />
 <title>Popieczona</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.28.1/babel.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
   * { box-sizing: border-box; }
@@ -24,6 +24,19 @@
 </head>
 <body>
 <div id="root"></div>
+<script>
+  window.addEventListener("error", function (e) {
+    var root = document.getElementById("root");
+    if (root && !root.hasChildNodes()) {
+      root.innerHTML =
+        '<div style="min-height:100vh;background:#241914;color:#F3E9DC;font-family:monospace;' +
+        'padding:24px;white-space:pre-wrap;line-height:1.6;font-size:13px;">' +
+        "Błąd ładowania aplikacji:\n\n" + (e.message || "nieznany błąd") +
+        (e.filename ? "\n\nPlik: " + e.filename + " (linia " + e.lineno + ")" : "") +
+        "</div>";
+    }
+  });
+</script>
 
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useCallback, useMemo } = React;
